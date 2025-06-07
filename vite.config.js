@@ -10,8 +10,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.svg"],
       manifest: {
-        name: "PayTrack",
-        short_name: "PayTrack",
+        name: "Zaylio",
+        short_name: "Zaylio",
         description: "Application de suivi de salaire",
         theme_color: "#ffffff",
         icons: [
