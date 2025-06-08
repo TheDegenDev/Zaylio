@@ -3,25 +3,19 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-// Fonction pour initialiser l'application
-async function initApp() {
-  try {
-    if ('serviceWorker' in navigator) {
-      // Attendre que le Service Worker soit enregistré
-      await navigator.serviceWorker.register('/service-worker.js')
+// Enregistrement du Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+    .then(() => {
       console.log('✅ Service Worker enregistré')
-    }
-    
-    // Une fois le Service Worker prêt, on rend l'application
-    createRoot(document.getElementById('root')).render(
-      <StrictMode>
-        <App />
-      </StrictMode>
-    )
-  } catch (error) {
-    console.error('❌ Erreur lors de l\'initialisation:', error)
-  }
+      // Une fois le Service Worker chargé, on affiche l'application
+      document.getElementById('root').classList.add('loaded')
+    })
+    .catch((err) => console.error('❌ Erreur Service Worker:', err));
 }
 
-// Démarrer l'application
-initApp()
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
