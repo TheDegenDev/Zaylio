@@ -14,6 +14,7 @@ export default defineConfig({
         short_name: "Zaylio",
         description: "Application de suivi de salaire",
         theme_color: "#ffffff",
+        start_url: "/app", // ✅ AJOUTE ÇA
         icons: [
           {
             src: "pwa-192x192.png",
@@ -28,6 +29,7 @@ export default defineConfig({
         ],
       },
     }),
+    
   ],
   server: {
     host: true,
